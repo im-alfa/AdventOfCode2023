@@ -14,19 +14,19 @@ const REPLACE: [(&str, &str); 9] = [
 fn main() {
     println!(
         "{:?}",
-       include_str!("../input.txt")
-        .lines()
-        .map(|line| {
-            let mut replaced_line = line.to_string();
-            for (word, number) in REPLACE {
-                replaced_line = replaced_line.replace(word, number);
-            }
+        include_str!("../input.txt")
+            .lines()
+            .map(|line| {
+                let mut replaced_line = line.to_string();
+                for (word, number) in REPLACE {
+                    replaced_line = replaced_line.replace(word, number);
+                }
 
-            let a: Vec<_> = replaced_line.chars().filter(|a| a.is_numeric()).collect();
-            format!("{}{}", a.first().unwrap(), a.last().unwrap())
-                .parse::<i32>()
-                .unwrap()
-        })
-        .sum::<i32>()
+                let a: Vec<_> = replaced_line.chars().filter(|a| a.is_numeric()).collect();
+                format!("{}{}", a.first().unwrap(), a.last().unwrap())
+                    .parse::<i32>()
+                    .unwrap()
+            })
+            .sum::<i32>()
     );
 }
